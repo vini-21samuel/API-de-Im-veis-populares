@@ -4,7 +4,6 @@ from pydantic import BaseModel
 class UserBase(BaseModel):
     nome: str
     email: str
-    tipo: str  # "admin" ou "user"
 
 # Esquema para criação de usuário
 class UserCreate(UserBase):
