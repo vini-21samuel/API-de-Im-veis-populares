@@ -1,6 +1,9 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Boolean
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
+
 from app.core.database import Base
+
 
 class User(Base):
     __tablename__ = "users"
@@ -10,7 +13,7 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     senha = Column(String, nullable=False)  # Hash da senha
     telefone = Column(String, nullable=True)
-    tipo = Column(String, nullable=False)   # "admin" ou "user"
+    is_admin = Column(Boolean, nullable=False)   # "admin" ou "user"
 
     imoveis = relationship("Imovel", back_populates="proprietario")
     transacoes = relationship("Transacao", back_populates="comprador")
