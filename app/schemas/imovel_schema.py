@@ -2,20 +2,24 @@ from pydantic import BaseModel
 from enum import Enum
 from typing import Optional
 
+
 class TipoImovel(str, Enum):
     CASA = "casa"
     APT = "apartamento"
     KITNET = "kitnet"
     DUPLEX = "duplex"
 
+
 class TipoNegocio(str, Enum):
     VENDA = "venda"
     ALUGUEL = "aluguel"
+
 
 class StatusImovel(str, Enum):
     DISPONIVEL = "disponivel"
     VENDIDO = "vendido"
     ALUGADO = "alugado"
+
 
 class ImovelBase(BaseModel):
     titulo: str
@@ -30,8 +34,10 @@ class ImovelBase(BaseModel):
     estado: str
     endereco: str
 
+
 class ImovelResponse(ImovelBase):
     id: int
+
 
 class ImovelUpdate(BaseModel):
     titulo: Optional[str] = None
