@@ -13,7 +13,7 @@ def create_imovel_repository(db: Session, imovel: Imovel):
 
     return {
         "status": "success",
-        "imovel": imovel
+        "data": imovel
     }
 
 
@@ -23,7 +23,7 @@ def get_imoveis_repository(db: Session):
     return {
         "status": "success",
         "results": len(imoveis),
-        "imoveis": imoveis
+        "data": imoveis
     }
 
 
@@ -40,7 +40,7 @@ def update_imovel_repository(db: Session, id: int, imovel_update: ImovelUpdate):
     db.refresh(db_imovel)
     return {
         "status": "success",
-        "imovel": db_imovel
+        "data": db_imovel
     }
 
 
@@ -62,7 +62,7 @@ def get_imoveis_by_cep_repository(db: Session, cep: str):
     return {
         "status": "success",
         "results": len(imoveis),
-        "imoveis": imoveis
+        "data": imoveis
     }
 
 
@@ -73,5 +73,5 @@ def get_imovel_by_id_repository(db: Session, id: int):
 
     return {
         "status": "success",
-        "imovel": imovel
+        "data": imovel
     }
