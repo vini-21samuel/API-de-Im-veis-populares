@@ -15,5 +15,4 @@ class User(Base):
     telefone = Column(String, nullable=True)
     is_admin = Column(Boolean, nullable=False)   # "admin" ou "user"
 
-    imoveis = relationship("Imovel", back_populates="proprietario")
     transacoes = relationship("Transacao", back_populates="comprador")
