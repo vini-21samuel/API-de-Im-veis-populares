@@ -11,8 +11,8 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String, nullable=False)
     email = Column(String, unique=True, index=True, nullable=False)
-    senha = Column(String, nullable=False)  # Hash da senha
+    senha = Column(String, nullable=False)
     telefone = Column(String, nullable=True)
-    is_admin = Column(Boolean, nullable=False)   # "admin" ou "user"
+    is_admin = Column(Boolean, nullable=False)
 
-    transacoes = relationship("Transacao", back_populates="comprador")
+    transacoes = relationship("Transacao", back_populates="user")
