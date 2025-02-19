@@ -10,7 +10,7 @@ class Transacao(Base):
     imovel_id = Column(Integer, ForeignKey("imoveis.id"))
     comprador_id = Column(Integer, ForeignKey("users.id"))
     valor = Column(Float, nullable=False)
-    data = Column(DateTime, default=datetime.utcnow)
+    data = Column(DateTime, default=datetime.now())
     
     imovel = relationship("Imovel", back_populates="transacoes")
     comprador = relationship("User", back_populates="transacoes")
