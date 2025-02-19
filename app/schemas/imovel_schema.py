@@ -3,8 +3,14 @@ from enum import Enum
 from typing import Optional
 
 class TipoImovel(str, Enum):
+    CASA = "casa"
+    APT = "apartamento"
+    KITNET = "kitnet"
+    DUPLEX = "duplex"
+
+class TipoNegocio(str, Enum):
     VENDA = "venda"
-    LOCACAO = "locacao"
+    ALUGUEL = "aluguel"
 
 class StatusImovel(str, Enum):
     DISPONIVEL = "disponivel"
@@ -16,18 +22,26 @@ class ImovelBase(BaseModel):
     descricao: str
     preco: float
     tipo: TipoImovel
-    status: Optional[StatusImovel] = StatusImovel.DISPONIVEL
-    area: Optional[float]
+    tipo_negocio: TipoNegocio
+    status: StatusImovel
+    area: float
     cidade: str
+    cep: str
     estado: str
     endereco: str
 
-class ImovelCreate(ImovelBase):
-    proprietario_id: int
-
 class ImovelResponse(ImovelBase):
     id: int
-    proprietario_id: int
 
-    class Config:
-        from_attributes = True
+class ImovelUpdate(BaseModel):
+    titulo: Optional[str] = None
+    descricao: Optional[str] = None
+    preco: Optional[float] = None
+    tipo: Optional[str] = None
+    tipo_negocio: Optional[str] = None
+    status: Optional[StatusImovel] = None
+    area: Optional[float] = None
+    cidade: Optional[str] = None
+    cep: Optional[str] = None
+    estado: Optional[str] = None
+    endereco: Optional[str] = None
